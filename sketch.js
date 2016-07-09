@@ -44,7 +44,7 @@ function Rectangle(_x, _y, _width, _height, _sample) {
   };
 
 }
-
+var pingPong = new Tone.PingPongDelay("4n", 0.2).toMaster();
 function preload() {
   sampler = new Tone.Sampler({
     A: {
@@ -91,8 +91,10 @@ function preload() {
 
 
     }
-  }).toMaster();
-
+  }).connect(pingPong);
+  sampler.envelope.attack = 0.1;
+  //sampler.envelope.release = 1.0;
+  //sampler.reverse = true;
 }
 
 function setup() {
@@ -138,7 +140,7 @@ function draw() {
       if (bright > 220) {
 
         rects[index / 4].displayTrigger();
-        sampler.triggerAttack(rects[index/4].sample);
+        sampler.triggerAttack(rects[index / 4].sample);
         print("x,y = " + x + " " + y);
       }
 
