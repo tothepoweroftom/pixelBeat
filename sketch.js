@@ -14,7 +14,7 @@ var sampler;
 
 var slider
 
-var vscale = 64;
+var vscale = 48;
 var rects = [];
 
 
@@ -99,16 +99,14 @@ function preload() {
 
 function setup() {
   canvas = createCanvas(640, 360);
-
+ 
 
 
   // specify multiple formats for different browsers
-  video = createVideo(['assets/cloudchambercontrast2.mov',
-    'assets/fingers.webm'
-  ]);
+  video = createVideo(['assets/redoneContrast480.mov']);
   video.loop();
   video.size(width / vscale, height / vscale)
-  video.hide();
+  //video.hide();
   pixelDensity(1);
   noStroke();
   fill(0);
