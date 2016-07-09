@@ -44,7 +44,7 @@ function Rectangle(_x, _y, _width, _height, _sample) {
   };
 
 }
-var pingPong = new Tone.PingPongDelay("4n", 0.2).toMaster();
+var pingPong = new Tone.PingPongDelay("4n", 0.1).toMaster();
 function preload() {
   sampler = new Tone.Sampler({
     A: {
@@ -92,8 +92,8 @@ function preload() {
 
     }
   }).connect(pingPong);
-  sampler.envelope.attack = 0.1;
-  //sampler.envelope.release = 1.0;
+  sampler.envelope.attack = 0.2;
+  sampler.envelope.release = 0.5;
   //sampler.reverse = true;
 }
 
@@ -115,7 +115,7 @@ function setup() {
   for (var y = 0; y < video.height; y++) {
     for (var x = 0; x < video.width; x++) {
       var index = (x + (y * video.width));
-      rects[index] = new Rectangle(x * vscale, y * vscale, vscale, vscale, notes[index]);
+      rects[index] = new Rectangle(x * vscale, y * vscale, vscale, vscale, notes[index%24]);
       rects[index].display();
       print(notes[index]);
     }
