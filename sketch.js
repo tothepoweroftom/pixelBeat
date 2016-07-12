@@ -1,18 +1,19 @@
 /*
- * @name Video Pixels
- * @frame 320,240
- * @description <p>Load a video, manipulate its pixels and draw to canvas.
- * <p><em><span class="small"> To run this example locally, you will need the
- * <a href="http://p5js.org/reference/#/libraries/p5.dom">p5.dom library</a>
- * at least one video file, and a running <a href="https://github.com/processing/p5.js/wiki/Local-server">local server</a>.</span></em></p>
- */
+* pixelBeat - Web Etude No. 2
+* The aim of this etude is to pixellize the video. From this we use the pixel array to look at the brightness
+* of individual arrays
+*
+*
+*
+*/
 var video;
 var canvas;
 var stepSize;
 var counter;
 var sampler;
 
-var slider
+var slider;
+var buttonVid;
 
 var vscale = 48;
 var rects = [];
@@ -30,6 +31,7 @@ function Rectangle(_x, _y, _width, _height, _sample) {
   this.width = _width;
   this.height = _height;
   this.sample = _sample;
+  this.counter = 10;
   this.display = function() {
     noFill();
     stroke(255, 0, 0);
@@ -92,21 +94,26 @@ function preload() {
 
     }
   }).connect(pingPong);
+
+
   sampler.envelope.attack = 0.2;
   sampler.envelope.release = 0.5;
   //sampler.reverse = true;
 }
 
 function setup() {
-  canvas = createCanvas(640, 360);
- 
+  canvas = createCanvas(windowWidth/4, windowHeight/4);
+  canvas.position(windowWidth/2,windowHeight/2);
+  buttonVid = createButton("Play");
+
 
 
   // specify multiple formats for different browsers
   video = createVideo(['assets/redoneContrast480.mov']);
   video.loop();
-  video.size(width / vscale, height / vscale)
-  //video.hide();
+  video.size(480 / vscale, 320 / vscale);
+  video.position(0,0);
+  video.hide();
   pixelDensity(1);
   noStroke();
   fill(0);
@@ -115,11 +122,17 @@ function setup() {
   for (var y = 0; y < video.height; y++) {
     for (var x = 0; x < video.width; x++) {
       var index = (x + (y * video.width));
-      rects[index] = new Rectangle(x * vscale, y * vscale, vscale, vscale, notes[index%24]);
+      rects[index] = new Rectangle(x * vscale, y * vscale, vscale, vscale, notes[index%25]);
       rects[index].display();
       print(notes[index]);
     }
   }
+}
+
+function windowResized(){
+  resizeCanvas(windowWidth, windowHeight);
+
+
 }
 
 function draw() {
@@ -149,7 +162,6 @@ function draw() {
       //rect(x * vscale, y * vscale, w, w);
     }
   }
-
 
 
 }
