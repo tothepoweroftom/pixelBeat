@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  <script src="libraries/p5.js" type="text/javascript"></script>
+
+
+  <script src="libraries/p5.dom.js" type="text/javascript"></script>
+  <script src="libraries/NexusUI.js" type="text/javascript"></script>
+  <script src="libraries/p5.Tone.min.js" type="text/javascript"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="libraries/roundslider.min.js"></script>
+  <link rel="stylesheet" href="libraries/roundslider.css" />
+  <script src="sketch.js" type="text/javascript"></script>
+
+  <style>
+    canvas,
+    video {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 100;
+      left: 100;
+    }
+
+    #vidDisplay {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 100;
+      left: 100;
+      -webkit-mask: url(./assets/mask.svg) 170px 20px;
+      -webkit-mask-repeat: no-repeat;
+      z-index: 5;
+    }
+  </style>
+  <div><img src="./assets/MusicFrom.jpg" style="width:200px;height:100px"></div>
+
+
+
+</head>
+
+<body bgcolor="#000000">
+
+  <div id="atom_container">
+    <canvas nx="position" style="width:176px;height:176px"></canvas>
+  </div>
+  <div id="atom_container2">
+    <canvas nx="position" style="width:176px;height:176px"></canvas>
+  </div>
+  <style>
+    #atom_container {
+      background: url('./assets/atomframe.jpg') no-repeat top left transparent;
+      width: 400px;
+      /* Adjust atom image width */
+      height: 400px;
+      /* Adjust atom image height */
+      position: relative;
+      z-index: 1;
+    }
+
+    #atom_container canvas {
+      position: absolute;
+      top: 112px;
+      /* Adjust top position */
+      left: 112px;
+      /* Adjust left position */
+    }
+
+    #atom_container2 {
+      background: url('./assets/atomframe.jpg') no-repeat transparent;
+      width: 400px;
+      /* Adjust atom image width */
+      height: 400px;
+      /* Adjust atom image height */
+      position: fixed;
+      z-index: 1;
+      position: absolute;
+      top: 100px;
+      right: 20px;
+    }
+
+    #atom_container2 canvas {
+      position: absolute;
+      top: 112px;
+      /* Adjust top position */
+      left: 112px;
+      /* Adjust left position */
+    }
+  </style>
+
+
+  <!-- <canvas nx="position" style="position: relative;width:200px;height:200px;margin-top:0px;margin-left:0px"></canvas>-->
+
+  <!--<canvas nx="position" style="position: relative;width:200px;height:200px;margin-top:0px;margin-left:0px"></canvas>-->
+
+
+</body>
+
+</html>
